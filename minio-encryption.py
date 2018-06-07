@@ -10,7 +10,7 @@ minio_secret_key = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
 STORAGE_ENDPOINT = 'play.minio.io:9000'
 
 # Add your bucket name here
-STORAGE_BUCKET = ''
+STORAGE_BUCKET = 'testbucket'
 
 content = BytesIO(b'Hello again')
 

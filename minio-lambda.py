@@ -37,8 +37,8 @@ minio_secret_key = 'zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG'
 STORAGE_ENDPOINT = 'play.minio.io:9000'
 
 # Add your source and target bucket name here
-STORAGE_BUCKET = ''
-TARGET_STORAGE_BUCKET = ''
+STORAGE_BUCKET = 'srctestbucket'
+TARGET_STORAGE_BUCKET = 'desttestbucket'
 
 minio = Minio(STORAGE_ENDPOINT, access_key=minio_access_key, secret_key=minio_secret_key)
 
@@ -46,7 +46,7 @@ minio.make_bucket(STORAGE_BUCKET)
 minio.make_bucket(TARGET_STORAGE_BUCKET)
 
 # Listen for bucket notifications
-events = minio.listen_bucket_notification(STORAGE_BUCKET, '','')
+events = minio.listen_bucket_notification(STORAGE_BUCKET, '','', ['s3:ObjectCreated:Put'])
 
 # Call lambda_handler for each event
 for event in events:
